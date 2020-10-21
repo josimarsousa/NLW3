@@ -17,6 +17,9 @@ export default class Orphanage{
 
     @Column()
     about: string;
+    
+    @Column()
+    instructions: string;
 
     @Column()
     opening_hours: string;
