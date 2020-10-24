@@ -1,15 +1,15 @@
-import express from 'express';
+import express, { request } from 'express';
+import './database/connection';
 import { getRepository } from 'typeorm';
-import Orphanage from './models/Orphanage';
+import Orphanage from "./models/Orphanage";
 
 
 const app = express();
 
 app.use(express.json());
 
-app.post('/orphanages', (request, response) =>{
-
-    const {
+/*app.post('/orphanages', async(request, response) => {
+    const{
         name,
         latitude,
         longitude,
@@ -17,7 +17,35 @@ app.post('/orphanages', (request, response) =>{
         instructions,
         opening_hours,
         open_on_weekends,
+    } = request.body;
 
+    const orphanagesRepository = getRepository(Orphanage);
+
+    const orphage = orphanagesRepository.create({
+        name,
+        latitude,
+        longitude,
+        about, 
+        instructions,
+        opening_hours,
+        open_on_weekends,
+    });
+
+    await orphanagesRepository.save(orphage);
+
+    return response.json({ message: 'Hello World'});
+    
+})*/
+
+app.post('/orphanages', async(request, response) => {
+     const {
+        name,
+        latitude,
+        longitude,
+        about, 
+        instructions,
+        opening_hours,
+        open_on_weekends,
     } = request.body;
 
     const orphanagesRepository = getRepository(Orphanage);
@@ -27,14 +55,14 @@ app.post('/orphanages', (request, response) =>{
         latitude,
         longitude,
         about,
-        
+        instructions,
+        opening_hours,
+        open_on_weekends,
+   });
 
-
-    });
-
-    orphanagesRepository.save(orphanage);
+    await orphanagesRepository.save(orphanage);
    
-   return response.json({ message: 'Hello World'});
+    return response.status(201).json(orphanage);
 });
 
 
