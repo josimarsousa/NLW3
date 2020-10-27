@@ -8,7 +8,7 @@ const app = express();
 
 app.use(express.json());
 
-app.post('/orphanages', (request, response) => {
+app.post('/orphanages', async(request, response) => {
     const {
         name, 
         latitude,
@@ -31,10 +31,10 @@ app.post('/orphanages', (request, response) => {
         open_on_weekends,
     });
 
-    console.log(request.body);
-    //await orphanagesRepository.save(orphanage);
     
-    return response.json({message: 'Hello World'});
+    await orphanagesRepository.save(orphanage);
+    
+    return response.status(201).json(orphanage);
 });
 
 app.listen(3333);
