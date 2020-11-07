@@ -1,8 +1,8 @@
-#page-create-orphanage {
+form.page-create-orphanage {
   display: flex;
 }
 
-#page-create-orphanage main {
+form.page-create-orphanage main {
   flex: 1;
 }
 
@@ -64,8 +64,8 @@ form.create-orphanage-form .input-block label span {
   line-height: 24px;
 }
 
-form.create-orphanage-form .input-block input,
-form.create-orphanage-form .input-block textarea {
+form.create-orphanage-form .input-block, .input-block textarea{ 
+ 
   width: 100%;
   background: #f5f8fa;
   border: 1px solid #d3e2e5;

@@ -27,6 +27,7 @@ export default function OprhanagesMap(){
 
         <footer>
           <button type="button" onClick={goBack}/>
+            <FiArrowLeft size={24} color="#FFF" />
         </footer>
       </aside>
 
